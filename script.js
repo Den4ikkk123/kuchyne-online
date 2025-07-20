@@ -55,7 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
     };
 
     try {
-      const res = await fetch('https://api-core.kuchyneoresi.eu/partners_api2/api/v2/WebSales', {
+      const res = await fetch('proxy.php', {
+
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
