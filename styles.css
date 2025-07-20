@@ -159,3 +159,22 @@ form input {
 .summary li {
   margin-bottom: 8px;
 }
+
+#souhrn {
+  list-style: none;        
+  padding: 0;
+  margin: 0 auto 40px;
+  font-size: 18px;       
+  text-align: left;
+  display: inline-block;
+  line-height: 1.6;
+}
+
+#souhrn li {
+  margin-bottom: 10px;
+  font-size: 18px;       
+}
+
+.step[data-step="7"] h2 {
+  font-size: 22px;        
+}
