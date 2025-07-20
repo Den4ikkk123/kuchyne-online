@@ -32,17 +32,18 @@ h2 {
 }
 
 .option-card {
-  width: 250px;
+  width: 300px;
   border: 2px solid #ccc;
   border-radius: 8px;
   padding: 20px;
   cursor: pointer;
   background: #fafafa;
-  transition: border 0.3s;
+  transition: border 0.3s, transform 0.2s;
 }
 
 .option-card:hover {
   border-color: #e00000;
+  transform: scale(1.03);
 }
 
 .option-card input[type="radio"] {
@@ -50,8 +51,9 @@ h2 {
 }
 
 .option-card img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
   margin-bottom: 10px;
 }
 
@@ -66,7 +68,9 @@ h2 {
 }
 
 .step-buttons {
-  margin-top: 20px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
 }
 
 button {
@@ -130,4 +134,28 @@ form input {
   margin-bottom: 15px;
   border-radius: 4px;
   border: 1px solid #ccc;
+}
+
+.summary {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.summary h2 {
+  color: #e00000;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.summary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  font-size: 16px;
+  text-align: left;
+  display: inline-block;
+}
+
+.summary li {
+  margin-bottom: 8px;
 }
