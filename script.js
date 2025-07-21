@@ -1,26 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   const steps = document.querySelectorAll('.step');
-  let currentStep = 0;
-  
-  function updateProgressBar(stepIndex) {
-  const steps = document.querySelectorAll('.progress-step');
-  steps.forEach((step, index) => {
-    step.classList.toggle('active', index === stepIndex);
-  });
-}
-
-
- function showStep(i) {
-  const steps = document.querySelectorAll('.step');
   const progressSteps = document.querySelectorAll('.progress-step');
-
-  steps.forEach((step, index) => {
-    step.style.display = index === i ? 'block' : 'none';
-  });
-
-  progressSteps.forEach((step, index) => {
-    step.classList.toggle('active', index === i);
-  });
+  let currentStep = 0;
 
   function updateSummary() {
     const fields = ['dispozice', 'trouba', 'digestor', 'lednice', 'dekor', 'cena'];
@@ -31,11 +12,23 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  function showStep(i) {
+    steps.forEach((step, index) => {
+      step.style.display = index === i ? 'block' : 'none';
+    });
+
+    progressSteps.forEach((step, index) => {
+      step.classList.toggle('active', index === i);
+    });
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   document.querySelectorAll('.next').forEach(btn => {
     btn.addEventListener('click', () => {
       if (currentStep < steps.length - 1) {
         currentStep++;
-        if (currentStep === 6) updateSummary(); // před shrnutím
+        if (currentStep === 6) updateSummary(); // перед останнім кроком
         showStep(currentStep);
       }
     });
@@ -70,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     try {
       const res = await fetch('proxy.php', {
-
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -92,3 +84,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
   showStep(currentStep);
 });
+
