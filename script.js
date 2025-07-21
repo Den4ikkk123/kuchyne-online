@@ -2,11 +2,17 @@ document.addEventListener('DOMContentLoaded', function () {
   const steps = document.querySelectorAll('.step');
   let currentStep = 0;
 
-  function showStep(i) {
-    steps.forEach((step, index) => {
-      step.style.display = index === i ? 'block' : 'none';
-    });
-  }
+ function showStep(i) {
+  const steps = document.querySelectorAll('.step');
+  const progressSteps = document.querySelectorAll('.progress-step');
+
+  steps.forEach((step, index) => {
+    step.style.display = index === i ? 'block' : 'none';
+  });
+
+  progressSteps.forEach((step, index) => {
+    step.classList.toggle('active', index === i);
+  });
 
   function updateSummary() {
     const fields = ['dispozice', 'trouba', 'digestor', 'lednice', 'dekor', 'cena'];
