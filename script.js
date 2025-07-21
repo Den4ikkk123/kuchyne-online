@@ -1,6 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
   const steps = document.querySelectorAll('.step');
   let currentStep = 0;
+  
+  function updateProgressBar(stepIndex) {
+  const steps = document.querySelectorAll('.progress-step');
+  steps.forEach((step, index) => {
+    step.classList.toggle('active', index === stepIndex);
+  });
+}
+
 
  function showStep(i) {
   const steps = document.querySelectorAll('.step');
