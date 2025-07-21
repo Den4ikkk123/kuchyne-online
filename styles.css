@@ -24,6 +24,15 @@ body {
   position: relative;
 }
 
+.step h2 {
+  font-size: 20px;
+  font-weight: normal;
+  color: #999; /* або конкретний сірий відтінок з макета */
+  margin-bottom: 20px;
+  text-transform: none;
+}
+
+
 .step-label {
   padding: 0 10px;
   font-size: 12px;
