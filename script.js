@@ -12,21 +12,24 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  function showStep(i) {
-    steps.forEach((step, index) => {
-      step.style.display = index === i ? 'block' : 'none';
-    });
+function showStep(i) {
+  steps.forEach((step, index) => {
+    step.style.display = index === i ? 'block' : 'none';
+  });
 
-    progressSteps.forEach((step, index) => {
-      step.classList.toggle('active', index === i);
-    });
+  const labels = document.querySelectorAll('.progress-label');
+  labels.forEach((label, index) => {
+    label.classList.toggle('active', index === i);
+  });
 
-    if (i >= progressSteps.length) {
-      progressSteps.forEach(step => step.classList.remove('active'));
-    }
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const fill = document.getElementById('underline-fill');
+  if (fill) {
+    fill.style.width = `calc(${((i + 1) / 7) * 100}%)`;
   }
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
 
   document.querySelectorAll('.next').forEach(btn => {
     btn.addEventListener('click', () => {
