@@ -22,16 +22,8 @@ function showStep(i) {
     label.classList.toggle('active', index === i);
   });
 
-  const fill = document.getElementById('underline-fill');
-  if (fill) {
-    fill.style.width = `calc(${((i + 1) / 7) * 100}%)`;
-  }
-
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
-
-
 
   document.querySelectorAll('.next').forEach(btn => {
     btn.addEventListener('click', () => {
