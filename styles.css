@@ -16,17 +16,6 @@ body {
   margin-bottom: 10px;
 }
 
-.progress-bar {
-  max-width: 700px;
-  margin: 0 auto 40px;
-  text-align: center;
-  font-size: 12px;
-  font-weight: bold;
-  text-transform: uppercase;
-  position: relative;
-}
-
-
 .step h2 {
   font-size: 20px;
   font-weight: normal;
@@ -144,38 +133,58 @@ button:hover {
   color: white;
 }
 
-.progress-track {
+.progress-bar-wrapper {
+  width: 100%;
+  background: transparent;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.progress-bar-bg {
+  background: #ddd; /* світло-сірий фон */
+  padding: 10px 20px 0 20px;
+  position: relative;
+}
+
+.progress-bar {
   display: flex;
   justify-content: space-between;
-  color: #ccc;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .progress-label {
   flex: 1;
-  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: #999;
   position: relative;
 }
 
 .progress-label.active {
-  color: #666; /* сірий як на скріні */
+  color: #333;
+  font-weight: bold;
 }
 
 .progress-underline {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  right: 20px;
   height: 3px;
-  background: #ddd;
-  width: 100%;
-  position: relative;
-  top: 4px;
+  background: #ccc;
+  border-radius: 2px;
+  overflow: hidden;
 }
 
 .underline-fill {
-  height: 3px;
-  background: #e00000;
-  width: calc(100% / 7); /* 1 крок з 7 */
-  transition: width 0.3s ease, left 0.3s ease;
-  position: absolute;
-  left: 0;
+  height: 100%;
+  width: 0;
+  background-color: #e00000;
+  transition: width 0.3s ease;
 }
+
 
 form label {
   display: block;
