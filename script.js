@@ -17,10 +17,13 @@ function showStep(i) {
     step.style.display = index === i ? 'block' : 'none';
   });
 
-  const labels = document.querySelectorAll('.progress-label');
-  labels.forEach((label, index) => {
-    label.classList.toggle('active', index === i);
-  });
+ const labels = document.querySelectorAll('.progress-label');
+labels.forEach((label, index) => {
+  label.classList.toggle('active', index === i);
+});
+
+const fill = document.getElementById('progress-fill');
+fill.style.width = `${(i / (steps.length - 1)) * 100}%`;
 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
