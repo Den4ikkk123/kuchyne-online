@@ -31,6 +31,8 @@ function showStep(i) {
 }
 
 
+
+
   document.querySelectorAll('.next').forEach(btn => {
     btn.addEventListener('click', () => {
       if (currentStep < steps.length - 1) {
