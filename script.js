@@ -16,10 +16,10 @@ document.addEventListener('DOMContentLoaded', function () {
     steps.forEach((step, index) => {
       step.style.display = index === i ? 'block' : 'none';
     });
-
-    progressSteps.forEach((step, index) => {
-      step.classList.toggle('active', index === i);
-    });
+    
+progressSteps.forEach((step, index) => {
+    step.classList.toggle('active', index === i);
+  });
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
