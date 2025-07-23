@@ -13,22 +13,22 @@ body {
   font-size: 36px;
   color: #e00000;
   text-transform: uppercase;
-  margin-top: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  font-weight: 700;
 }
 
 .progress-container {
-  max-width: 900px;
-  margin: 0 auto 40px;
-  padding: 0 15px;
+  max-width: 1100px;
+  margin: 0 auto 40px auto;
   position: relative;
+  padding: 0 20px;
 }
 
 .progress-bar-bg {
   width: 100%;
   height: 6px;
-  background-color: #ddd;
-  border-radius: 3px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
   position: absolute;
   top: 0;
   left: 0;
@@ -36,19 +36,19 @@ body {
 
 .progress-bar {
   height: 6px;
-  background-color: #999; /* Grey fill */
-  border-radius: 3px;
+  background-color: #999;
+  border-radius: 4px;
+  width: 0%;
+  transition: width 0.3s ease;
   position: absolute;
   top: 0;
   left: 0;
-  width: 0%;
-  transition: width 0.3s ease;
 }
 
 .progress-labels {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .progress-label {
@@ -66,7 +66,7 @@ body {
 #kuchyne-form {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px 40px;
+  padding: 20px;
 }
 
 .step {
@@ -77,10 +77,8 @@ body {
   display: block;
 }
 
-h2 {
-  font-size: 20px;
-  font-weight: 700;
-  color: #333;
+.step h2 {
+  font-size: 22px;
   margin-bottom: 10px;
   text-transform: uppercase;
 }
@@ -88,72 +86,80 @@ h2 {
 .subtext {
   font-size: 14px;
   color: #777;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+}
+
+.step[data-step="2"] .options-grid {
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
 }
 
 .options-grid {
   display: flex;
   justify-content: center;
+  gap: 40px;
   flex-wrap: wrap;
-  gap: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .option-card {
-  width: 260px;
-  background: #fafafa;
+  width: 300px;
+  border: 2px solid #ccc;
   border-radius: 10px;
-  padding: 15px;
+  padding: 20px;
+  background: #fafafa;
+  transition: border 0.3s, background 0.3s;
   cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: center;
   position: relative;
-  border: 1px solid #ddd;
 }
 
 .option-card img {
   width: 100%;
   height: auto;
-  margin-bottom: 15px;
-}
-
-.option-card .label-text {
-  font-weight: bold;
-  font-size: 16px;
-  color: #666;
-  margin-bottom: 8px;
-}
-
-.description-text {
-  font-size: 14px;
-  color: #888;
-  line-height: 1.4;
-}
-
-.option-card:hover {
-  background-color: #f3f3f3;
+  margin-bottom: 10px;
 }
 
 .option-card input[type="radio"] {
   display: none;
 }
 
-.option-card input[type="radio"]:checked + img,
-.option-card input[type="radio"]:checked ~ .label-text,
-.option-card input[type="radio"]:checked ~ .description-text {
-  filter: none;
-  opacity: 1;
-  color: #000;
+.option-card .label-text {
+  font-weight: bold;
+  color: #999;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
 }
 
+.option-card .description {
+  font-size: 14px;
+  color: #777;
+  line-height: 1.4;
+  margin-top: 6px;
+  border-top: 1px solid #ddd;
+  padding-top: 6px;
+}
+
+.option-card:hover {
+  background: #fff;
+  border-color: #999;
+}
+
+.option-card input[type="radio"]:checked + img,
 .option-card input[type="radio"]:checked ~ .label-text {
+  color: #000;
   font-weight: bold;
+}
+
+.option-card input[type="radio"]:checked + img {
+  outline: none; /* Забираємо червону рамку */
 }
 
 .step-buttons {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 15px;
+  margin-top: 20px;
 }
 
 button {
@@ -162,20 +168,20 @@ button {
   border: 2px solid #e00000;
   padding: 12px 30px;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 16px;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s, color 0.3s;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background: #e00000;
+  color: white;
 }
 
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-button:hover:not(:disabled) {
-  background: #e00000;
-  color: #fff;
 }
 
 #souhrn {
@@ -187,33 +193,29 @@ button:hover:not(:disabled) {
 }
 
 #souhrn li {
-  font-size: 16px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  margin-bottom: 8px;
 }
 
-@media (max-width: 768px) {
-  .main-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
+#contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
 
-  .progress-labels {
-    flex-wrap: wrap;
-    gap: 10px;
-    font-size: 10px;
-  }
+#contact-form input {
+  flex: 1 1 45%;
+  padding: 14px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
 
-  .options-grid {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .option-card {
-    width: 90%;
-    max-width: 320px;
-  }
-
-  button {
-    width: 45%;
-  }
+#contact-form button[type="submit"] {
+  flex: 1 1 100%;
+  max-width: 200px;
+  margin-top: 10px;
 }
