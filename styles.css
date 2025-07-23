@@ -13,35 +13,36 @@ body {
   font-size: 36px;
   color: #e00000;
   text-transform: uppercase;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .progress-container {
-  max-width: 1200px;
-  margin: 0 auto 40px auto;
+  max-width: 900px;
+  margin: 0 auto 40px;
+  padding: 0 15px;
   position: relative;
-  padding: 0 20px;
 }
 
 .progress-bar-bg {
   width: 100%;
-  height: 4px;
-  background: #ccc; /* Сіра лінія */
+  height: 6px;
+  background-color: #ddd;
+  border-radius: 3px;
   position: absolute;
-  top: 12px; /* вище тексту */
+  top: 0;
   left: 0;
-  z-index: 1;
 }
 
 .progress-bar {
-  height: 4px;
-  background: #e00000;
-  width: 0;
+  height: 6px;
+  background-color: #999; /* Grey fill */
+  border-radius: 3px;
   position: absolute;
-  top: 12px;
+  top: 0;
   left: 0;
-  z-index: 2;
-  transition: width 0.3s ease-in-out;
+  width: 0%;
+  transition: width 0.3s ease;
 }
 
 .progress-labels {
@@ -55,9 +56,6 @@ body {
   color: #999;
   font-weight: 500;
   text-transform: uppercase;
-  flex: 1;
-  text-align: center;
-  position: relative;
 }
 
 .progress-label.active {
@@ -68,7 +66,7 @@ body {
 #kuchyne-form {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 15px 40px;
 }
 
 .step {
@@ -79,67 +77,76 @@ body {
   display: block;
 }
 
-.step h2 {
-  font-size: 18px;
-  font-weight: normal;
-  color: #999; /* сірий текст */
-  margin-bottom: 20px;
-  text-transform: none;
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .subtext {
   font-size: 14px;
-  color: #666;
+  color: #777;
   margin-bottom: 20px;
 }
 
 .options-grid {
   display: flex;
   justify-content: center;
-  gap: 30px;
   flex-wrap: wrap;
+  gap: 30px;
   margin-bottom: 30px;
 }
 
 .option-card {
   width: 260px;
+  background: #fafafa;
   border-radius: 10px;
   padding: 15px;
-  background: #fafafa;
-  transition: background 0.3s, transform 0.3s;
-  position: relative;
   cursor: pointer;
+  transition: all 0.3s ease;
   text-align: center;
-}
-
-.option-card:hover {
-  background: #f0f0f0;
-}
-
-.option-card input[type="radio"] {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
+  position: relative;
+  border: 1px solid #ddd;
 }
 
 .option-card img {
   width: 100%;
-  max-width: 220px;
   height: auto;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-.label-text {
+.option-card .label-text {
   font-weight: bold;
-  color: #999;
   font-size: 16px;
-  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 8px;
 }
 
-.option-card input[type="radio"]:checked ~ img,
+.description-text {
+  font-size: 14px;
+  color: #888;
+  line-height: 1.4;
+}
+
+.option-card:hover {
+  background-color: #f3f3f3;
+}
+
+.option-card input[type="radio"] {
+  display: none;
+}
+
+.option-card input[type="radio"]:checked + img,
+.option-card input[type="radio"]:checked ~ .label-text,
+.option-card input[type="radio"]:checked ~ .description-text {
+  filter: none;
+  opacity: 1;
+  color: #000;
+}
+
 .option-card input[type="radio"]:checked ~ .label-text {
-  color: #333;
-  background: #f0f0f0;
   font-weight: bold;
 }
 
@@ -147,7 +154,6 @@ body {
   display: flex;
   justify-content: center;
   gap: 20px;
-  margin-top: 20px;
 }
 
 button {
@@ -169,51 +175,45 @@ button:disabled {
 
 button:hover:not(:disabled) {
   background: #e00000;
-  color: white;
+  color: #fff;
 }
 
 #souhrn {
   list-style: none;
   padding: 0;
-  margin: 0 auto;
+  margin: 20px auto;
   display: inline-block;
   text-align: left;
 }
 
 #souhrn li {
-  font-size: 18px;
-  margin-bottom: 8px;
-}
-
-form input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 768px) {
+  .main-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .progress-labels {
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 10px;
+  }
+
   .options-grid {
     flex-direction: column;
     align-items: center;
   }
 
-  .progress-labels {
-    flex-wrap: wrap;
-    font-size: 10px;
-  }
-
   .option-card {
     width: 90%;
+    max-width: 320px;
+  }
+
+  button {
+    width: 45%;
   }
 }
-
-
-  .progress-labels {
-    font-size: 10px;
-  }
-}
-
