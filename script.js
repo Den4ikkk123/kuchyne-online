@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', function () {
   const steps = document.querySelectorAll('.step');
-  const progressSteps = document.querySelectorAll('.progress-step');
+  const progressLabels = document.querySelectorAll('.progress-label');
+  const progressBar = document.querySelector('.progress-bar');
   let currentStep = 0;
+
+  const nextButtons = document.querySelectorAll('.next');
+  const prevButtons = document.querySelectorAll('.prev');
 
   function updateSummary() {
     const fields = ['dispozice', 'trouba', 'digestor', 'lednice', 'dekor', 'cena'];
@@ -12,33 +16,49 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-function showStep(i) {
-  steps.forEach((step, index) => {
-    step.style.display = index === i ? 'block' : 'none';
+  function showStep(i) {
+    steps.forEach((step, index) => {
+      step.classList.toggle('active', index === i);
+    });
+
+    progressLabels.forEach((label, index) => {
+      label.classList.toggle('active', index === i);
+    });
+
+    const progressPercent = (i / (steps.length - 1)) * 100;
+    progressBar.style.width = progressPercent + '%';
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    checkButtonState(i);
+  }
+
+  function checkButtonState(stepIndex) {
+    const step = steps[stepIndex];
+    const nextButton = step.querySelector('.next');
+    if (nextButton) {
+      const selected = step.querySelector('input[type="radio"]:checked');
+      nextButton.disabled = !selected;
+    }
+  }
+
+  document.querySelectorAll('input[type="radio"]').forEach(input => {
+    input.addEventListener('change', () => {
+      checkButtonState(currentStep);
+    });
   });
 
- const labels = document.querySelectorAll('.progress-label');
-labels.forEach((label, index) => {
-  label.classList.toggle('active', index === i);
-});
-
-const fill = document.getElementById('progress-fill');
-fill.style.width = `${(i / (steps.length - 1)) * 100}%`;
-
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-  document.querySelectorAll('.next').forEach(btn => {
+  nextButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       if (currentStep < steps.length - 1) {
         currentStep++;
-        if (currentStep === 6) updateSummary();
+        if (currentStep === steps.length - 2) updateSummary(); // перед shrnutí
         showStep(currentStep);
       }
     });
   });
 
-  document.querySelectorAll('.prev').forEach(btn => {
+  prevButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       if (currentStep > 0) {
         currentStep--;
@@ -90,4 +110,3 @@ fill.style.width = `${(i / (steps.length - 1)) * 100}%`;
 
   showStep(currentStep);
 });
-
