@@ -4,58 +4,62 @@ body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
   padding: 0;
-  background: #fff;
+  background-color: #fff;
   color: #333;
   text-align: center;
 }
 
 .main-title {
   font-size: 36px;
-  font-weight: 700;
   color: #e00000;
-  margin: 30px 0 20px;
   text-transform: uppercase;
+  margin: 30px 0;
 }
 
 .progress-container {
-  max-width: 900px;
-  margin: 0 auto 40px;
-}
-
-.progress-bar-bg {
-  height: 6px;
-  background: #ddd;
-  border-radius: 4px;
-  width: 100%;
   position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 20px auto 10px;
+  height: 4px;
+  background-color: #ccc; 
+  border-radius: 2px;
 }
 
 .progress-bar {
-  height: 6px;
-  background: #999;
-  border-radius: 4px;
-  width: 0%;
-  transition: width 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: #999;
+  border-radius: 2px;
+  width: 0%; 
+  transition: width 0.4s ease;
 }
 
 .progress-labels {
   display: flex;
   justify-content: space-between;
-  margin-top: 12px;
-  font-size: 14px;
+  max-width: 900px;
+  margin: 10px auto 40px;
+  padding: 0 5px;
+}
+
+.progress-label {
+  font-size: 12px;
   color: #999;
   text-transform: uppercase;
 }
 
 .progress-label.active {
-  font-weight: bold;
   color: #333;
+  font-weight: bold;
 }
 
 #kuchyne-form {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 0 20px 50px;
 }
 
 .step {
@@ -66,77 +70,81 @@ body {
   display: block;
 }
 
-h2 {
+.step h2 {
   font-size: 22px;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 20px;
+  color: #000;
+  margin-bottom: 30px;
 }
 
 .subtext {
   font-size: 14px;
-  color: #888;
-  margin-bottom: 20px;
+  color: #666;
+  margin: 10px 0 30px;
 }
 
 .options-grid {
   display: flex;
   justify-content: center;
+  gap: 40px;
   flex-wrap: wrap;
-  gap: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .option-card {
-  width: 280px;
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  padding: 15px;
+  width: 260px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   background: #fafafa;
   cursor: pointer;
-  transition: all 0.3s ease;
-  text-align: center;
+  overflow: hidden;
+  transition: border 0.3s, background 0.3s;
+}
+
+.option-card img {
+  width: 100%;
+  height: auto;
+}
+
+.option-card .label-text {
+  font-weight: bold;
+  font-size: 16px;
+  color: #666;
+  margin: 10px 0;
+  text-transform: uppercase;
 }
 
 .option-card input[type="radio"] {
   display: none;
 }
 
-.option-card img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 12px;
-  border-radius: 6px;
-}
-
-.option-card .label-text {
-  font-weight: bold;
-  color: #555;
-  font-size: 18px;
-  margin-bottom: 6px;
-  border-bottom: 1px solid #ccc; /* Риска під заголовком */
-  padding-bottom: 6px;
-}
-
-.option-card .description {
-  font-size: 14px;
-  color: #888;
-  margin-top: 6px;
-}
-
 .option-card:hover {
-  border-color: #e00000;
+  background: #f0f0f0;
 }
 
 .option-card input[type="radio"]:checked + img,
-.option-card.selected {
-  border: 2px solid #e00000;
+.option-card input[type="radio"]:checked ~ .label-text {
+  border: none;
+  color: #000;
+}
+
+.option-separator {
+  width: 80%;
+  height: 1px;
+  background: #ccc;
+  margin: 8px auto;
+}
+
+.description-text {
+  font-size: 14px;
+  color: #777;
+  padding: 5px 10px 15px;
 }
 
 .step-buttons {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 20px;
 }
 
 button {
@@ -148,12 +156,13 @@ button {
   font-size: 14px;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.3s, color 0.3s;
+  min-width: 140px;
 }
 
-button:hover {
+button:hover:enabled {
   background: #e00000;
-  color: #fff;
+  color: white;
 }
 
 button:disabled {
@@ -161,30 +170,31 @@ button:disabled {
   cursor: not-allowed;
 }
 
-form {
-  max-width: 500px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-form input {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-
 #souhrn {
   list-style: none;
   padding: 0;
-  margin: 0 auto 20px;
+  margin: 0 auto 30px;
   display: inline-block;
   text-align: left;
 }
 
 #souhrn li {
   font-size: 18px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+}
+
+#contact-form input {
+  width: 100%;
+  max-width: 400px;
+  padding: 14px;
+  margin: 10px auto;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+#contact-form .step-buttons {
+  justify-content: center;
+  gap: 20px;
 }
