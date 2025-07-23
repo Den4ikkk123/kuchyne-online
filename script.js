@@ -4,8 +4,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const progressBar = document.querySelector('.progress-bar');
   let currentStep = 0;
 
-  const nextButtons = document.querySelectorAll('.next');
-  const prevButtons = document.querySelectorAll('.prev');
+  const totalSteps = steps.length;
+
+  function updateProgressBar() {
+    const progressPercent = (currentStep / (totalSteps - 1)) * 100;
+    progressBar.style.width = `${progressPercent}%`;
+
+    progressLabels.forEach((label, index) => {
+      label.classList.toggle('active', index === currentStep);
+    });
+  }
 
   function updateSummary() {
     const fields = ['dispozice', 'trouba', 'digestor', 'lednice', 'dekor', 'cena'];
@@ -20,50 +28,47 @@ document.addEventListener('DOMContentLoaded', function () {
     steps.forEach((step, index) => {
       step.classList.toggle('active', index === i);
     });
-
-    progressLabels.forEach((label, index) => {
-      label.classList.toggle('active', index === i);
-    });
-
-    const progressPercent = (i / (steps.length - 1)) * 100;
-    progressBar.style.width = progressPercent + '%';
-
+    updateProgressBar();
     window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    checkButtonState(i);
   }
 
-  function checkButtonState(stepIndex) {
-    const step = steps[stepIndex];
-    const nextButton = step.querySelector('.next');
-    if (nextButton) {
-      const selected = step.querySelector('input[type="radio"]:checked');
-      nextButton.disabled = !selected;
+  function checkNextButton(stepElement) {
+    const nextButton = stepElement.querySelector('.next');
+    if (!nextButton) return;
+
+    if (currentStep >= totalSteps - 2) {
+      nextButton.disabled = false;
+      return;
     }
+
+    const inputs = stepElement.querySelectorAll('input[type="radio"]');
+    nextButton.disabled = !Array.from(inputs).some(input => input.checked);
   }
 
-  document.querySelectorAll('input[type="radio"]').forEach(input => {
-    input.addEventListener('change', () => {
-      checkButtonState(currentStep);
-    });
-  });
-
-  nextButtons.forEach(btn => {
+  document.querySelectorAll('.next').forEach(btn => {
     btn.addEventListener('click', () => {
       if (currentStep < steps.length - 1) {
         currentStep++;
-        if (currentStep === steps.length - 2) updateSummary(); // перед shrnutí
+        if (currentStep === 6) updateSummary();
         showStep(currentStep);
+        checkNextButton(steps[currentStep]);
       }
     });
   });
 
-  prevButtons.forEach(btn => {
+  document.querySelectorAll('.prev').forEach(btn => {
     btn.addEventListener('click', () => {
       if (currentStep > 0) {
         currentStep--;
         showStep(currentStep);
+        checkNextButton(steps[currentStep]);
       }
+    });
+  });
+
+  document.querySelectorAll('input[type="radio"]').forEach(input => {
+    input.addEventListener('change', () => {
+      checkNextButton(steps[currentStep]);
     });
   });
 
@@ -108,5 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Inicializace
   showStep(currentStep);
+  checkNextButton(steps[currentStep]);
 });
+
