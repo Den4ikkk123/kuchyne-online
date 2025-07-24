@@ -19,7 +19,7 @@ body {
 .progress-container {
   width: 100%;
   max-width: 900px;
-  height: 6px; 
+  height: 6px;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 0;
@@ -32,7 +32,7 @@ body {
   width: 0%;
   background-color: #999;
   transition: width 0.4s ease;
-  border-radius: 0; 
+  border-radius: 0;
 }
 
 .progress-labels {
@@ -90,7 +90,7 @@ body {
   background: #fafafa;
   cursor: pointer;
   overflow: hidden;
-  transition: border 0.3s, background 0.3s;
+  transition: background 0.3s;
 }
 
 .option-card img {
@@ -159,6 +159,16 @@ button:hover:enabled {
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+button.prev {
+  border: 2px solid #ccc;
+  color: #333;
+}
+
+button.prev:hover {
+  background: #f0f0f0;
+  color: #333;
 }
 
 #souhrn {
