@@ -27,7 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    const progress = (i / (steps.length - 1)) * 100;
+
+    const progress = (i / (progressLabels.length - 1)) * 100;
     progressBar.style.width = `${progress}%`;
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -103,3 +104,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
   showStep(currentStep);
 });
+
