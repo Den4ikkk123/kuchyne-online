@@ -1,18 +1,21 @@
 document.addEventListener('DOMContentLoaded', function () {
   const steps = document.querySelectorAll('.step');
+  const labels = document.querySelectorAll('.progress-label');
   const progressBar = document.querySelector('.progress-bar');
-  const progressLabels = document.querySelectorAll('.progress-label');
   let currentStep = 0;
 
-  const nextButtons = document.querySelectorAll('.next');
-  const prevButtons = document.querySelectorAll('.prev');
-
   function updateProgressBar() {
-    const percent = (currentStep / (steps.length - 1)) * 100;
-    progressBar.style.width = `${percent}%`;
+    const progress = (currentStep / (steps.length - 1)) * 100;
+    progressBar.style.width = `${progress}%`;
 
-    progressLabels.forEach((label, index) => {
-      label.classList.toggle('active', index === currentStep);
+    labels.forEach((label, index) => {
+      label.classList.remove('active', 'completed');
+      if (index < currentStep) {
+        label.classList.add('completed');
+      }
+      if (index === currentStep) {
+        label.classList.add('active');
+      }
     });
   }
 
@@ -27,39 +30,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function showStep(i) {
     steps.forEach((step, index) => {
-      step.classList.toggle('active', index === i);
+      step.style.display = index === i ? 'block' : 'none';
     });
     updateProgressBar();
-    toggleNextButtonState();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function toggleNextButtonState() {
-    const current = steps[currentStep];
-    const nextBtn = current.querySelector('.next');
-
-    if (currentStep >= steps.length - 2) {
-      if (nextBtn) nextBtn.disabled = false;
-      return;
-    }
-
-    const checked = current.querySelector('input[type="radio"]:checked');
-    if (nextBtn) {
-      nextBtn.disabled = !checked;
-    }
-  }
-
-  nextButtons.forEach(btn => {
+  document.querySelectorAll('.next').forEach(btn => {
     btn.addEventListener('click', () => {
       if (currentStep < steps.length - 1) {
         currentStep++;
-        if (currentStep === steps.length - 2) updateSummary(); // Update summary before last step
+        if (currentStep === 6) updateSummary();
         showStep(currentStep);
       }
     });
   });
 
-  prevButtons.forEach(btn => {
+  document.querySelectorAll('.prev').forEach(btn => {
     btn.addEventListener('click', () => {
       if (currentStep > 0) {
         currentStep--;
@@ -68,9 +54,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  document.querySelectorAll('.option-card input[type="radio"]').forEach(input => {
-    input.addEventListener('change', () => {
-      toggleNextButtonState();
+  const radios = document.querySelectorAll('input[type="radio"]');
+  radios.forEach(radio => {
+    radio.addEventListener('change', function () {
+      const step = this.closest('.step');
+      const nextBtn = step.querySelector('.next');
+      if (nextBtn) nextBtn.disabled = false;
     });
   });
 
@@ -117,3 +106,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
   showStep(currentStep);
 });
+
