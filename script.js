@@ -1,52 +1,82 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const steps = document.querySelectorAll('.step');
-  const labels = document.querySelectorAll('.progress-label');
-  const progressBar = document.querySelector('.progress-bar');
+document.addEventListener("DOMContentLoaded", () => {
+  const steps = document.querySelectorAll(".step");
+  const nextButtons = document.querySelectorAll(".next");
+  const prevButtons = document.querySelectorAll(".prev");
+  const progressBar = document.querySelector(".progress-bar");
+  const progressLabels = document.querySelectorAll(".progress-label");
   let currentStep = 0;
 
-  function updateProgressBar() {
-    const progress = (currentStep / (steps.length - 1)) * 100;
-    progressBar.style.width = `${progress}%`;
+  const totalSteps = steps.length;
 
-    labels.forEach((label, index) => {
-      label.classList.remove('active', 'completed');
+  function updateProgress() {
+    const percent = (currentStep / (totalSteps - 1)) * 100;
+    progressBar.style.width = percent + "%";
+
+    progressLabels.forEach((label, index) => {
+      label.classList.remove("active", "completed");
       if (index < currentStep) {
-        label.classList.add('completed');
+        label.classList.add("completed");
       }
       if (index === currentStep) {
-        label.classList.add('active');
+        label.classList.add("active");
       }
     });
   }
 
-  function updateSummary() {
-    const fields = ['dispozice', 'trouba', 'digestor', 'lednice', 'dekor', 'cena'];
-    fields.forEach(field => {
-      const selected = document.querySelector(`input[name="${field}"]:checked`);
-      const target = document.getElementById(`souhrn-${field}`);
-      if (selected && target) target.textContent = selected.value;
-    });
-  }
-
-  function showStep(i) {
+  function showStep(stepIndex) {
     steps.forEach((step, index) => {
-      step.style.display = index === i ? 'block' : 'none';
+      step.classList.toggle("active", index === stepIndex);
     });
-    updateProgressBar();
+    updateProgress();
+    toggleNextButton();
   }
 
-  document.querySelectorAll('.next').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (currentStep < steps.length - 1) {
+  function toggleNextButton() {
+    const activeStep = steps[currentStep];
+    const radios = activeStep.querySelectorAll('input[type="radio"]');
+    const nextBtn = activeStep.querySelector(".next");
+
+    if (!nextBtn) return;
+
+    if (currentStep >= totalSteps - 2) {
+      nextBtn.disabled = false;
+      return;
+    }
+
+    let isChecked = false;
+    radios.forEach(radio => {
+      if (radio.checked) isChecked = true;
+    });
+
+    nextBtn.disabled = !isChecked;
+  }
+
+  nextButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      if (currentStep < totalSteps - 1) {
         currentStep++;
-        if (currentStep === 6) updateSummary();
+        if (currentStep === 6) {
+        
+          document.getElementById("souhrn-dispozice").textContent =
+            document.querySelector('input[name="dispozice"]:checked')?.value || '';
+          document.getElementById("souhrn-trouba").textContent =
+            document.querySelector('input[name="trouba"]:checked')?.value || '';
+          document.getElementById("souhrn-digestor").textContent =
+            document.querySelector('input[name="digestor"]:checked')?.value || '';
+          document.getElementById("souhrn-lednice").textContent =
+            document.querySelector('input[name="lednice"]:checked')?.value || '';
+          document.getElementById("souhrn-dekor").textContent =
+            document.querySelector('input[name="dekor"]:checked')?.value || '';
+          document.getElementById("souhrn-cena").textContent =
+            document.querySelector('input[name="cena"]:checked')?.value || '';
+        }
         showStep(currentStep);
       }
     });
   });
 
-  document.querySelectorAll('.prev').forEach(btn => {
-    btn.addEventListener('click', () => {
+  prevButtons.forEach(button => {
+    button.addEventListener("click", () => {
       if (currentStep > 0) {
         currentStep--;
         showStep(currentStep);
@@ -54,56 +84,38 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  const radios = document.querySelectorAll('input[type="radio"]');
-  radios.forEach(radio => {
-    radio.addEventListener('change', function () {
-      const step = this.closest('.step');
-      const nextBtn = step.querySelector('.next');
-      if (nextBtn) nextBtn.disabled = false;
+  document.querySelectorAll('input[type="radio"]').forEach(radio => {
+    radio.addEventListener("change", () => {
+      toggleNextButton();
     });
   });
 
-  const form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
+  const form = document.getElementById("contact-form");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
 
-      const data = {
-        partnerId: 99,
-        studioCode: 1,
-        customer: {
-          firstName: form.firstName.value,
-          lastName: form.lastName.value,
-          title: "",
-          phone: form.phone.value,
-          email: form.email.value
-        },
-        segment: 1,
-        comment: `Dispozice: ${document.querySelector('input[name="dispozice"]:checked')?.value}, Trouba: ${document.querySelector('input[name="trouba"]:checked')?.value}, Digestoř: ${document.querySelector('input[name="digestor"]:checked')?.value}, Lednice: ${document.querySelector('input[name="lednice"]:checked')?.value}, Dekor: ${document.querySelector('input[name="dekor"]:checked')?.value}, Rozpočet: ${document.querySelector('input[name="cena"]:checked')?.value}`
-      };
+    const data = new FormData(form);
+    data.append("dispozice", document.querySelector('input[name="dispozice"]:checked')?.value || '');
+    data.append("trouba", document.querySelector('input[name="trouba"]:checked')?.value || '');
+    data.append("digestor", document.querySelector('input[name="digestor"]:checked')?.value || '');
+    data.append("lednice", document.querySelector('input[name="lednice"]:checked')?.value || '');
+    data.append("dekor", document.querySelector('input[name="dekor"]:checked')?.value || '');
+    data.append("cena", document.querySelector('input[name="cena"]:checked')?.value || '');
 
-      try {
-        const res = await fetch('proxy.php', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'APIKey': '39498757-0426-4A99-919C-3265414E53F7'
-          },
-          body: JSON.stringify(data)
-        });
-
-        if (res.ok) {
-          alert('Formulář byl úspěšně odeslán.');
-          form.reset();
-        } else {
-          alert('Došlo k chybě při odesílání.');
-        }
-      } catch (error) {
-        alert('Chyba připojení: ' + error);
-      }
+    fetch("proxy.php", {
+      method: "POST",
+      body: data
+    })
+    .then(response => response.text())
+    .then(result => {
+      alert("Formulář byl úspěšně odeslán!");
+      console.log(result);
+    })
+    .catch(error => {
+      alert("Chyba při odesílání formuláře!");
+      console.error(error);
     });
-  }
+  });
 
   showStep(currentStep);
 });
-
