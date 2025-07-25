@@ -306,20 +306,26 @@ button.prev:hover {
   }
 
   /* Нижній блок з кроками */
-  .mobile-progress {
+ .mobile-progress {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    font-size: 14px;
-    color: #666;
+    gap: 20px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #444;
     font-weight: bold;
   }
 
   .mobile-progress .arrow {
-    font-size: 20px;
-    margin: 0 15px;
+    font-size: 22px;
+    color: #999;
     cursor: pointer;
+    user-select: none;
+  }
+
+  .mobile-progress .arrow:hover {
+    color: #333;
   }
 }
 
