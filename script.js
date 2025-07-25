@@ -2,9 +2,22 @@ document.addEventListener('DOMContentLoaded', function () {
   const steps = document.querySelectorAll('.step');
   const progressBar = document.querySelector('.progress-bar');
   const progressLabels = document.querySelectorAll('.progress-label');
+  const stepCounters = document.querySelectorAll('.mobile-progress .step-counter');
   let currentStep = 0;
 
-  // Оновлення підсумку на етапі 7
+  /** ✅ Мапа коротких заголовків для мобільного */
+  const shortTitles = {
+    1: 'Vyberte dispozici:',
+    2: 'Vyberte troubu:',
+    3: 'Vyberte digestoř:',
+    4: 'Vyberte lednici:',
+    5: 'Vyberte dekor:',
+    6: 'Vyberte rozpočet:',
+    7: 'Shrnutí:',
+    8: 'Kontaktní údaje:'
+  };
+
+  /** ✅ Оновлення підсумку */
   function updateSummary() {
     const fields = ['dispozice', 'trouba', 'digestor', 'lednice', 'dekor', 'cena'];
     fields.forEach(field => {
@@ -14,15 +27,23 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Оновлення мобільного лічильника
-  function updateMobileProgress() {
-    const counter = document.querySelector('.step.active .mobile-progress .step-counter');
-    if (counter) {
-      counter.textContent = `KROK ${currentStep + 1}/7`;
+  /** ✅ Оновлення заголовка для мобільного */
+  function updateMobileTitle() {
+    const activeStep = steps[currentStep];
+    const h2 = activeStep.querySelector('h2');
+    if (window.innerWidth <= 768 && h2) {
+      h2.textContent = shortTitles[currentStep + 1] || h2.textContent;
     }
   }
 
-  // Показ кроку + оновлення прогресів
+  /** ✅ Оновлення прогресу мобільної версії */
+  function updateMobileProgress() {
+    stepCounters.forEach(counter => {
+      counter.textContent = `KROK ${currentStep + 1}/7`;
+    });
+  }
+
+  /** ✅ Показати активний крок */
   function showStep(i) {
     steps.forEach((step, index) => {
       step.classList.toggle('active', index === i);
@@ -41,10 +62,11 @@ document.addEventListener('DOMContentLoaded', function () {
     progressBar.style.width = `${progress}%`;
 
     updateMobileProgress();
+    updateMobileTitle();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Кнопки "Далі"
+  /** ✅ Кнопка "Далі" */
   document.querySelectorAll('.next').forEach(btn => {
     btn.addEventListener('click', () => {
       if (currentStep < steps.length - 1) {
@@ -55,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Кнопки "Назад"
+  /** ✅ Кнопка "Назад" */
   document.querySelectorAll('.prev').forEach(btn => {
     btn.addEventListener('click', () => {
       if (currentStep > 0) {
@@ -65,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Активуємо кнопку "Далі" після вибору
+  /** ✅ Активуємо кнопку після вибору */
   document.querySelectorAll('input[type="radio"]').forEach(input => {
     input.addEventListener('change', () => {
       const parentStep = input.closest('.step');
@@ -74,20 +96,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Мобільні стрілки
-  document.addEventListener('click', (e) => {
-    if (e.target.classList.contains('prev-step') && currentStep > 0) {
-      currentStep--;
-      showStep(currentStep);
-    }
-    if (e.target.classList.contains('next-step') && currentStep < steps.length - 1) {
-      currentStep++;
-      if (currentStep === 6) updateSummary();
-      showStep(currentStep);
-    }
-  });
-
-  // Відправка форми
+  /** ✅ Обробка форми */
   const form = document.getElementById('contact-form');
   if (form) {
     form.addEventListener('submit', async function (e) {
@@ -129,6 +138,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Старт
+  /** ✅ Обробка стрілок у мобільному прогресі */
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('prev-step') && currentStep > 0) {
+      currentStep--;
+      showStep(currentStep);
+    }
+    if (e.target.classList.contains('next-step') && currentStep < steps.length - 1) {
+      currentStep++;
+      if (currentStep === 6) updateSummary();
+      showStep(currentStep);
+    }
+  });
+
+  /** Старт */
   showStep(currentStep);
 });
