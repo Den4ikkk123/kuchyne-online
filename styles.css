@@ -206,3 +206,120 @@ button.prev:hover {
   gap: 20px;
 }
 
+/* === MOBILE STYLES === */
+@media (max-width: 768px) {
+  body {
+    padding: 0 15px;
+  }
+
+  .main-title {
+    font-size: 24px;
+    margin: 20px 0 10px;
+  }
+
+  /* Приховуємо прогрес-бар для мобільної версії */
+  .progress-container,
+  .progress-labels {
+    display: none;
+  }
+
+  /* Заголовок кроку */
+  .step h2 {
+    font-size: 18px;
+    font-weight: normal;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 15px;
+  }
+
+  .step h2 strong {
+    color: #333;
+    font-weight: bold;
+  }
+
+  /* Вертикальні картки */
+  .options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .option-card {
+    width: 100%;
+    max-width: 100%;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .option-card img {
+    width: 80px;
+    height: auto;
+    flex-shrink: 0;
+  }
+
+  .label-text {
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+  }
+
+  .description-text {
+    font-size: 14px;
+    color: #777;
+    margin-top: 5px;
+  }
+
+  .option-separator {
+    display: none; /* Прибираємо лінію для мобіли */
+  }
+
+  /* Кнопка "Pokračovat" по центру, червона */
+  .step-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .step-buttons button {
+    width: 100%;
+    max-width: 100%;
+    font-size: 16px;
+    padding: 14px;
+    border-radius: 8px;
+  }
+
+  .step-buttons .prev {
+    color: #333;
+    border-color: #ccc;
+  }
+
+  .step-buttons .next {
+    background: #e00000;
+    color: #fff;
+    border: 2px solid #e00000;
+  }
+
+  /* Нижній блок з кроками */
+  .mobile-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+    font-weight: bold;
+  }
+
+  .mobile-progress .arrow {
+    font-size: 20px;
+    margin: 0 15px;
+    cursor: pointer;
+  }
+}
+
