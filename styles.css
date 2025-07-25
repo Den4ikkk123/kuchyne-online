@@ -304,5 +304,25 @@ button.prev:hover {
   .mobile-progress {
     display: none;
   }
+  
+   .step[data-step="1"] h2 {
+    font-size: 18px;
+    line-height: 1.4;
+    position: relative;
+    visibility: hidden; /* Ховаємо оригінальний текст */
+  }
+
+  .step[data-step="1"] h2::after {
+    content: "VYBERTE DISPOZICI:";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    visibility: visible;
+    font-weight: normal;
+    font-size: 18px;
+    color: #555;
+  }
 }
 
