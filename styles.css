@@ -208,130 +208,136 @@ button.prev:hover {
 
 /* === Mobile Version Fixes === */
 @media (max-width: 768px) {
-  /* Ховаємо прогрес бар і назви етапів */
+  /* Приховати десктопний прогрес */
   .progress-container,
   .progress-labels {
     display: none;
   }
 
-  /* Заголовки */
+  /* Заголовок мобільної версії */
   .step h2 {
     font-size: 18px;
-    margin-bottom: 15px;
-    text-align: center;
-  }
-
-  /* Для кроку 1 скорочуємо заголовок */
-  .step[data-step="1"] h2 {
-    position: relative;
-    visibility: hidden;
-  }
-  .step[data-step="1"] h2::after {
-    content: "VYBERTE DISPOZICI:";
-    visibility: visible;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 18px;
-    font-weight: normal;
+    font-weight: 400; /* Тонкий для "Vyberte" */
     color: #333;
+    text-align: center;
+    margin-bottom: 15px;
+    text-transform: uppercase;
   }
 
-  /* Опції в одну колонку */
+  .step h2 strong {
+    font-weight: 700; /* Жирне для DISPOZICI */
+  }
+
+  /* Вирівнювання карток */
   .options-grid {
+    display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 15px;
+    margin-bottom: 25px;
   }
 
   .option-card {
-    width: 100%;
-    max-width: 320px;
-    margin: 0 auto;
-    border: 1px solid #ddd;
-    background: #f9f9f9;
-    border-radius: 10px;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 340px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
   }
 
   .option-card img {
-    width: 80px;
-    height: auto;
-    margin-right: 15px;
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
   }
 
-  .option-card .label-text {
+  .label-text {
     font-size: 16px;
+    font-weight: 700;
     color: #333;
-    font-weight: bold;
-    text-align: left;
+    margin-bottom: 8px;
+  }
+
+  .option-separator {
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+    margin: 5px 0 8px;
   }
 
   .description-text {
     font-size: 14px;
     color: #666;
-    margin-top: 4px;
+    line-height: 1.4;
+    text-align: left;
   }
 
-  /* Ховаємо кнопку Zpět на мобільних */
-  .step-buttons .prev {
-    display: none;
-  }
-
-  /* Кнопка Pokračovat на всю ширину */
-  .step-buttons .next,
-  #contact-form button[type="submit"] {
-    width: 100%;
-    max-width: 320px;
-    margin: 20px auto 0;
-    display: block;
-    background: #e00000;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 14px;
-    font-size: 16px;
-  }
-
-  .step-buttons .next:disabled {
-    opacity: 0.5;
-  }
-
-  /* Стиль мобільного прогресу */
+  /* Стиль для мобільного прогресу */
   .mobile-progress {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
     margin: 15px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
   }
 
   .mobile-progress .arrow {
-    width: 40px;
-    height: 40px;
-    background: #f5f5f5;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
+    background: #f5f5f5;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 18px;
     color: #666;
     cursor: pointer;
-    border: 1px solid #ddd;
+    transition: background 0.3s ease;
   }
 
   .mobile-progress .arrow:hover {
-    background: #eee;
+    background: #ddd;
   }
 
-  .mobile-progress .step-counter {
-    font-size: 14px;
-    color: #333;
-    font-weight: bold;
+  /* Кнопка продовжити */
+  .step-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .step-buttons button {
+    width: 90%;
+    max-width: 320px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    background: #e00000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .step-buttons button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+
+  .step-buttons button:hover:enabled {
+    background: #c20000;
+  }
+
+  /* Сховати кнопку Zpět у мобільній версії */
+  .step-buttons .prev {
+    display: none !important;
   }
 }
-
