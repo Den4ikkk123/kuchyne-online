@@ -206,96 +206,103 @@ button.prev:hover {
   gap: 20px;
 }
 
-/* === MOBILE STYLE FIXES === */
+/* ==== MOBILE STYLES (до 768px) ==== */
 @media (max-width: 768px) {
-  /* Ховаємо кнопку Zpět */
-  .step-buttons button.prev {
-    display: none !important;
+  .progress-container,
+  .progress-labels,
+  .step-buttons .prev {
+    display: none; /* Ховаємо прогрес і кнопку Zpět на мобільних */
   }
 
-  /* Заголовки коротші */
-  .step h2 {
-    font-size: 18px;
-    text-transform: uppercase;
-  }
-  .step[data-step="1"] h2::after { content: " VYBERTE DISPOZICI:"; }
-  .step[data-step="2"] h2::after { content: " VYBERTE UMÍSTĚNÍ TROUBY:"; }
-
-  /* Опції карток для моб */
-  .options-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .option-card {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-    max-width: 360px;
-    margin: 0 auto;
-    background: #f9f9f9;
-    border-radius: 8px;
-    padding: 12px;
-  }
-  .option-card img {
-    width: 60px;
-    height: auto;
-    margin-right: 12px;
-  }
-  .option-card .label-text {
-    font-size: 16px;
-    font-weight: bold;
-    color: #666;
-  }
-
-  /* Мобільний прогрес */
   .mobile-progress {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-    margin: 20px 0;
-  }
-  .mobile-progress .step-counter {
+    margin: 15px 0;
     font-size: 16px;
     font-weight: bold;
     color: #333;
   }
+
   .mobile-progress .arrow {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background-color: #f4f4f4;
-    color: #888;
-    font-size: 18px;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 38px;
+    height: 38px;
+    background-color: #f6f6f6;
+    border-radius: 50%;
+    font-size: 18px;
     cursor: pointer;
+    user-select: none;
     transition: background 0.3s;
   }
+
   .mobile-progress .arrow:hover {
-    background-color: #ddd;
+    background-color: #e3e3e3;
   }
 
-  /* Кнопка Pokračovat */
-  .step-buttons {
-    display: block;
-    width: 100%;
+  .mobile-progress .step-counter {
+    font-size: 14px;
+    color: #666;
+    font-weight: normal;
   }
+
+  /* Картки для мобільного */
+  .options-grid {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .option-card {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fafafa;
+  }
+
+  .option-card img {
+    width: 60px;
+    height: auto;
+  }
+
+  .option-card .label-text {
+    font-size: 18px;
+    color: #333;
+    text-align: left;
+  }
+
+  .description-text {
+    font-size: 14px;
+    color: #777;
+    margin-top: 4px;
+    text-align: left;
+  }
+
   .step-buttons button.next {
-    display: block;
     width: 90%;
-    margin: 10px auto 0;
+    max-width: 340px;
+    margin: 20px auto 0;
     background-color: #e00000;
     color: #fff;
-    border: none;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
-    padding: 14px;
     border-radius: 6px;
+    padding: 14px 0;
   }
 }
 
+/* ==== DESKTOP: приховуємо мобільні елементи ==== */
+@media (min-width: 769px) {
+  .mobile-progress {
+    display: none;
+  }
+}
 
