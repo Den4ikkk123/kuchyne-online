@@ -105,3 +105,48 @@ document.addEventListener('DOMContentLoaded', function () {
   showStep(currentStep);
 });
 
+//mobv
+
+function updateMobileProgress() {
+  const counter = document.querySelector('.step.active .mobile-progress .step-counter');
+  if (counter) {
+    counter.textContent = `KROK ${currentStep + 1}/7`;
+  }
+}
+
+// Оновлюємо після кожного показу кроку:
+function showStep(i) {
+  steps.forEach((step, index) => {
+    step.classList.toggle('active', index === i);
+  });
+
+  progressLabels.forEach((label, index) => {
+    label.classList.toggle('active', index === i);
+    if (index < i) {
+      label.classList.add('completed');
+    } else {
+      label.classList.remove('completed');
+    }
+  });
+
+  const progress = (i / (steps.length - 1)) * 100;
+  progressBar.style.width = `${progress}%`;
+
+  updateMobileProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Обробка стрілок у мобільному прогресі
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('prev-step') && currentStep > 0) {
+    currentStep--;
+    showStep(currentStep);
+  }
+  if (e.target.classList.contains('next-step') && currentStep < steps.length - 1) {
+    currentStep++;
+    if (currentStep === 6) updateSummary();
+    showStep(currentStep);
+  }
+});
+
+
