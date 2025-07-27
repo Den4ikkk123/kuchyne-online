@@ -239,6 +239,46 @@ button.prev:hover {
 
 /* ===== Мобільна версія ===== */
 @media (max-width: 768px) {
+   .step[data-step="2"] .option-card {
+    display: flex;
+    align-items: center;
+    flex-direction: row; /* картинка ліворуч */
+    gap: 12px;
+    padding: 12px;
+    text-align: left;
+  }
+
+  .step[data-step="2"] .option-card img {
+    width: 80px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 6px;
+  }
+
+  .step[data-step="2"] .label-text {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 8px;
+    display: block;
+    position: relative;
+    text-transform: uppercase;
+  }
+
+  /* ✅ Лінія під назвою */
+  .step[data-step="2"] .label-text::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #ccc;
+    margin: 4px 0 6px 0;
+  }
+
+  .step[data-step="2"] .description-text {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+  }
 
   /* Ховаємо прогрес і навігацію десктопу */
   .progress-container,
