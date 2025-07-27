@@ -25,10 +25,10 @@
   .step[data-step="2"] .option-card .label-text::after {
     content: "";
     display: block;
-    width: 220px; /* довжина лінії */
+    width: 220px;
     height: 2px;
     background-color: #ccc;
-    margin: 8px auto 0 auto; /* вирівняти по центру під текстом */
+    margin: 8px auto 0 auto;
   }
 
 body {
@@ -392,6 +392,11 @@ button.prev:hover {
     background: #f1f1f1;
   }
 
+  /* Ховаємо ліву стрілку на першому кроці */
+  .step[data-step="1"] ~ .mobile-progress .prev-step {
+    display: none !important;
+  }
+
   .mobile-progress .step-counter {
     font-weight: 700;
     font-size: 18px;
@@ -418,3 +423,4 @@ button.prev:hover {
     width: auto;
   }
 }
+
