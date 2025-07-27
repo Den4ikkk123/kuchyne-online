@@ -265,6 +265,22 @@ button.prev:hover {
     border-radius: 4px;
     margin-right: 12px;
   }
+  
+  /* Риска під заголовком на всю ширину картки */
+.option-card .text-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.option-card .text-block::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+    margin: 6px 0;
+}
 
   .text-block {
     flex: 1;
