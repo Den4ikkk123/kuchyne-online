@@ -6,24 +6,29 @@
   }
 }
 
-  .step[data-step="2"] .option-card .label-text {
-    display: block;
-    position: relative;
-    padding-bottom: 16px;
-    margin-bottom: 16px;
-    font-weight: bold;
+   .step[data-step="2"] .option-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
     text-align: center;
+  }
+
+  .step[data-step="2"] .option-card .label-text {
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+    position: relative;
+    padding-bottom: 10px;
   }
 
   .step[data-step="2"] .option-card .label-text::after {
     content: "";
     display: block;
-    width: 85%;
+    width: 60px; /* довжина лінії */
     height: 2px;
     background-color: #ccc;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    margin: 8px auto 0 auto; /* вирівняти по центру під текстом */
   }
 
 body {
