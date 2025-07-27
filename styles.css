@@ -18,7 +18,7 @@
   .step[data-step="2"] .option-card .label-text::after {
     content: "";
     display: block;
-    width: 100%;
+    width: 85%;
     height: 2px;
     background-color: #ccc;
     position: absolute;
