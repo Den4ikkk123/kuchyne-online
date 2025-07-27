@@ -305,14 +305,60 @@ button.prev:hover {
     position: relative;
   }
 
-  /* ✅ Лінія тільки для кроку 2 */
-  .step[data-step="2"] .label-text::after {
+  .step[data-step="2"] .options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .step[data-step="2"] .option-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .step[data-step="2"] .option-card img {
+    width: 100px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 6px;
+  }
+
+  .step[data-step="2"] .option-card .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }
+
+  .step[data-step="2"] .option-card .label-text {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+
+  .step[data-step="2"] .option-card .label-text::after {
     content: "";
     display: block;
-    width: 60px;
+    width: 60%;
     height: 2px;
-    background: #ccc;
-    margin: 6px 0;
+    background-color: #ccc;
+    margin-top: 4px;
+  }
+
+  .step[data-step="2"] .option-card .description-text {
+    font-size: 14px;
+    color: #555;
+    margin-top: 8px;
   }
 
   .description-text {
