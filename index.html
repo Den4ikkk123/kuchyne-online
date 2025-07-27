@@ -9,7 +9,7 @@
 <body>
   <h1 class="main-title">KUCHYNĚ ONLINE</h1>
 
-  <!-- Десктопний прогрес -->
+  <!-- Прогрес-бар (десктоп) -->
   <div class="progress-container">
     <div class="progress-bar"></div>
   </div>
@@ -24,24 +24,31 @@
   </div>
 
   <div id="kuchyne-form">
-    <!-- STEP 1 -->
+
+    <!-- ✅ STEP 1 -->
     <div class="step active" data-step="1">
-      <h2>Vyberte <strong>DISPOZICI KUCHYŇSKÉ LINKY</strong>:</h2>
+      <h2><span class="thin">VYBERTE</span> <strong>DISPOZICI KUCHYŇSKÉ LINKY</strong>:</h2>
       <div class="options-grid">
         <label class="option-card">
           <input type="radio" name="dispozice" value="Jednořadá">
-          <img src="images/ikony-kuchyne-desktop-1.jpg">
-          <div class="label-text">JEDNOŘADÁ</div>
+          <img src="images/ikony-kuchyne-desktop-1.jpg" alt="Jednořadá">
+          <div class="text-block">
+            <div class="label-text">JEDNOŘADÁ</div>
+          </div>
         </label>
         <label class="option-card">
           <input type="radio" name="dispozice" value="Dvouřadá">
-          <img src="images/ikony-kuchyne-desktop-2.jpg">
-          <div class="label-text">DVOUŘADÁ</div>
+          <img src="images/ikony-kuchyne-desktop-2.jpg" alt="Dvouřadá">
+          <div class="text-block">
+            <div class="label-text">DVOUŘADÁ</div>
+          </div>
         </label>
         <label class="option-card">
           <input type="radio" name="dispozice" value="Tvar L">
-          <img src="images/ikony-kuchyne-desktop-3.jpg">
-          <div class="label-text">TVAR L</div>
+          <img src="images/ikony-kuchyne-desktop-3.jpg" alt="Tvar L">
+          <div class="text-block">
+            <div class="label-text">TVAR L</div>
+          </div>
         </label>
       </div>
       <div class="mobile-progress">
@@ -49,26 +56,30 @@
         <span class="step-counter">KROK 1/7</span>
         <span class="arrow next-step">&#8594;</span>
       </div>
-      <div class="step-buttons"><button class="next" disabled>Pokračovat</button></div>
+      <div class="step-buttons">
+        <button class="next" disabled>Pokračovat</button>
+      </div>
     </div>
 
-    <!-- STEP 2 -->
+    <!-- ✅ STEP 2 -->
     <div class="step" data-step="2">
-      <h2>Vyberte <strong>UMÍSTĚNÍ TROUBY</strong>:</h2>
+      <h2><span class="thin">VYBERTE UMÍSTĚNÍ</span> <strong>TROUBY</strong>:</h2>
       <div class="options-grid">
         <label class="option-card">
           <input type="radio" name="trouba" value="Vestavěná">
-          <img src="images/TROUBA-1.webp">
-          <div class="label-text">VESTAVĚNÁ</div>
-          <hr class="option-separator">
-          <div class="description-text">Tradiční umístění do spodní skříňky pod varnou desku.</div>
+          <img src="images/TROUBA-1.webp" alt="Vestavěná trouba">
+          <div class="text-block">
+            <div class="label-text">VESTAVĚNÁ</div>
+            <div class="description-text">Tradiční umístění do spodní skříňky pod varnou desku.</div>
+          </div>
         </label>
         <label class="option-card">
           <input type="radio" name="trouba" value="Nástěnná">
-          <img src="images/TROUBA-2.webp">
-          <div class="label-text">NÁSTĚNNÁ</div>
-          <hr class="option-separator">
-          <div class="description-text">Stropní/nástěnná výškově nastavitelná digestoř.</div>
+          <img src="images/TROUBA-2.webp" alt="Nástěnná trouba">
+          <div class="text-block">
+            <div class="label-text">NÁSTĚNNÁ</div>
+            <div class="description-text">Stropní/nástěnná výškově nastavitelná digestoř.</div>
+          </div>
         </label>
       </div>
       <div class="mobile-progress">
@@ -82,19 +93,23 @@
       </div>
     </div>
 
-    <!-- STEP 3 -->
+    <!-- ✅ STEP 3 -->
     <div class="step" data-step="3">
-      <h2>Vyberte <strong>DIGESTOŘ</strong>:</h2>
+      <h2><span class="thin">VYBERTE</span> <strong>DIGESTOŘ</strong>:</h2>
       <div class="options-grid">
         <label class="option-card">
           <input type="radio" name="digestor" value="Vestavěná">
-          <img src="images/DIGESTOR-2.webp">
-          <div class="label-text">VESTAVĚNÁ</div>
+          <img src="images/DIGESTOR-2.webp" alt="Vestavěná digestoř">
+          <div class="text-block">
+            <div class="label-text">VESTAVĚNÁ</div>
+          </div>
         </label>
         <label class="option-card">
           <input type="radio" name="digestor" value="Nástěnná">
-          <img src="images/DIGESTOR-1.webp">
-          <div class="label-text">NÁSTĚNNÁ</div>
+          <img src="images/DIGESTOR-1.webp" alt="Nástěnná digestoř">
+          <div class="text-block">
+            <div class="label-text">NÁSTĚNNÁ</div>
+          </div>
         </label>
       </div>
       <div class="mobile-progress">
@@ -108,19 +123,23 @@
       </div>
     </div>
 
-    <!-- STEP 4 -->
+    <!-- ✅ STEP 4 -->
     <div class="step" data-step="4">
-      <h2>Vyberte <strong>TYP LEDNICE</strong>:</h2>
+      <h2><span class="thin">VYBERTE</span> <strong>TYP LEDNICE</strong>:</h2>
       <div class="options-grid">
         <label class="option-card">
           <input type="radio" name="lednice" value="Vestavěná">
-          <img src="images/LEDNICE-2.webp">
-          <div class="label-text">VESTAVĚNÁ</div>
+          <img src="images/LEDNICE-2.webp" alt="Vestavěná lednice">
+          <div class="text-block">
+            <div class="label-text">VESTAVĚNÁ</div>
+          </div>
         </label>
         <label class="option-card">
           <input type="radio" name="lednice" value="Volně stojící">
-          <img src="images/LEDNICE-1.webp">
-          <div class="label-text">VOLNĚ STOJÍCÍ</div>
+          <img src="images/LEDNICE-1.webp" alt="Volně stojící lednice">
+          <div class="text-block">
+            <div class="label-text">VOLNĚ STOJÍCÍ</div>
+          </div>
         </label>
       </div>
       <div class="mobile-progress">
@@ -134,30 +153,14 @@
       </div>
     </div>
 
-    <!-- STEP 5 -->
+    <!-- ✅ STEP 5 -->
     <div class="step" data-step="5">
-      <h2>Vyberte <strong>DEKOR KUCHYNĚ</strong>:</h2>
+      <h2><span class="thin">VYBERTE</span> <strong>DEKOR KUCHYNĚ</strong>:</h2>
       <div class="options-grid">
-        <label class="option-card">
-          <input type="radio" name="dekor" value="Bílá">
-          <img src="images/ikony-kuchyne-desktop-1.jpg">
-          <div class="label-text">BÍLÁ</div>
-        </label>
-        <label class="option-card">
-          <input type="radio" name="dekor" value="Dřevodekor">
-          <img src="images/ikony-kuchyne-desktop-2.jpg">
-          <div class="label-text">DŘEVODEKOR</div>
-        </label>
-        <label class="option-card">
-          <input type="radio" name="dekor" value="Barevná">
-          <img src="images/ikony-kuchyne-desktop-3.jpg">
-          <div class="label-text">BAREVNÁ</div>
-        </label>
-        <label class="option-card">
-          <input type="radio" name="dekor" value="Rustikální">
-          <img src="images/ikony-kuchyne-desktop-3.jpg">
-          <div class="label-text">RUSTIKÁLNÍ</div>
-        </label>
+        <label class="option-card"><input type="radio" name="dekor" value="Bílá"><img src="images/ikony-kuchyne-desktop-1.jpg"><div class="text-block"><div class="label-text">BÍLÁ</div></div></label>
+        <label class="option-card"><input type="radio" name="dekor" value="Dřevodekor"><img src="images/ikony-kuchyne-desktop-2.jpg"><div class="text-block"><div class="label-text">DŘEVODEKOR</div></div></label>
+        <label class="option-card"><input type="radio" name="dekor" value="Barevná"><img src="images/ikony-kuchyne-desktop-3.jpg"><div class="text-block"><div class="label-text">BAREVNÁ</div></div></label>
+        <label class="option-card"><input type="radio" name="dekor" value="Rustikální"><img src="images/ikony-kuchyne-desktop-3.jpg"><div class="text-block"><div class="label-text">RUSTIKÁLNÍ</div></div></label>
       </div>
       <div class="mobile-progress">
         <span class="arrow prev-step">&#8592;</span>
@@ -170,30 +173,14 @@
       </div>
     </div>
 
-    <!-- STEP 6 -->
+    <!-- ✅ STEP 6 -->
     <div class="step" data-step="6">
-      <h2>Vyberte <strong>ROZPOČET</strong>:</h2>
+      <h2><span class="thin">VYBERTE</span> <strong>ROZPOČET</strong>:</h2>
       <div class="options-grid">
-        <label class="option-card">
-          <input type="radio" name="cena" value="Do 50.000 Kč">
-          <img src="images/ikony-kuchyne-desktop-3.jpg">
-          <div class="label-text">DO 50.000 Kč</div>
-        </label>
-        <label class="option-card">
-          <input type="radio" name="cena" value="Do 100.000 Kč">
-          <img src="images/ikony-kuchyne-desktop-3.jpg">
-          <div class="label-text">DO 100.000 Kč</div>
-        </label>
-        <label class="option-card">
-          <input type="radio" name="cena" value="Do 200.000 Kč">
-          <img src="images/ikony-kuchyne-desktop-3.jpg">
-          <div class="label-text">DO 200.000 Kč</div>
-        </label>
-        <label class="option-card">
-          <input type="radio" name="cena" value="Nad 200.000 Kč">
-          <img src="images/ikony-kuchyne-desktop-3.jpg">
-          <div class="label-text">NAD 200.000 Kč</div>
-        </label>
+        <label class="option-card"><input type="radio" name="cena" value="Do 50.000 Kč"><img src="images/ikony-kuchyne-desktop-3.jpg"><div class="text-block"><div class="label-text">DO 50.000 Kč</div></div></label>
+        <label class="option-card"><input type="radio" name="cena" value="Do 100.000 Kč"><img src="images/ikony-kuchyne-desktop-3.jpg"><div class="text-block"><div class="label-text">DO 100.000 Kč</div></div></label>
+        <label class="option-card"><input type="radio" name="cena" value="Do 200.000 Kč"><img src="images/ikony-kuchyne-desktop-3.jpg"><div class="text-block"><div class="label-text">DO 200.000 Kč</div></div></label>
+        <label class="option-card"><input type="radio" name="cena" value="Nad 200.000 Kč"><img src="images/ikony-kuchyne-desktop-3.jpg"><div class="text-block"><div class="label-text">NAD 200.000 Kč</div></div></label>
       </div>
       <div class="mobile-progress">
         <span class="arrow prev-step">&#8592;</span>
@@ -206,7 +193,7 @@
       </div>
     </div>
 
-    <!-- STEP 7 -->
+    <!-- ✅ STEP 7 -->
     <div class="step" data-step="7">
       <h2><strong>SHRNUTÍ</strong></h2>
       <ul id="souhrn">
@@ -228,9 +215,9 @@
       </div>
     </div>
 
-    <!-- STEP 8 -->
+    <!-- ✅ STEP 8 -->
     <div class="step" data-step="8">
-      <h2><strong>KONTAKTNÍ ÚDAJE</strong></h2>
+      <h2><span class="thin">KONTAKTNÍ</span> <strong>ÚDAJE</strong>:</h2>
       <form id="contact-form">
         <input type="text" name="firstName" placeholder="Jméno" required>
         <input type="text" name="lastName" placeholder="Příjmení" required>
@@ -238,10 +225,11 @@
         <input type="email" name="email" placeholder="Email" required>
         <div class="step-buttons">
           <button class="prev">Zpět</button>
-          <button type="submit">Odeslat</button>
+          <button type="submit">ODESLAT</button>
         </div>
       </form>
     </div>
+
   </div>
 
   <script src="script.js"></script>
