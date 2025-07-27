@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const progressBar = document.querySelector('.progress-bar');
   const progressLabels = document.querySelectorAll('.progress-label');
   const stepCounters = document.querySelectorAll('.mobile-progress .step-counter');
+  const prevArrow = document.querySelector('.mobile-progress .prev-step');
   let currentStep = 0;
 
   const shortTitles = {
@@ -25,32 +26,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
- function updateMobileTitle() {
-  const activeStep = steps[currentStep];
-  const h2 = activeStep.querySelector('h2');
-
-  if (window.innerWidth <= 768 && h2) {
-    const original = shortTitles[currentStep + 1] || h2.textContent;
-
-    const parts = original.replace(':', '').split(' ');
-    const firstWord = parts.shift(); // "Vyberte"
-    const rest = parts.join(' '); // "dispozici"
-
-    h2.innerHTML = `<span style="font-weight: 400;">${firstWord}</span> <strong style="text-transform: uppercase;">${rest}</strong>:`;
+  function updateMobileTitle() {
+    const activeStep = steps[currentStep];
+    const h2 = activeStep.querySelector('h2');
+    if (window.innerWidth <= 768 && h2) {
+      const original = shortTitles[currentStep + 1] || h2.textContent;
+      const parts = original.replace(':', '').split(' ');
+      const firstWord = parts.shift();
+      const rest = parts.join(' ');
+      h2.innerHTML = `<span style="font-weight: 400;">${firstWord}</span> <strong style="text-transform: uppercase;">${rest}</strong>:`;
+    }
   }
-}
 
   function updateMobileProgress() {
     stepCounters.forEach(counter => {
       counter.textContent = `KROK ${currentStep + 1}/7`;
     });
+    if (prevArrow) {
+      prevArrow.style.display = currentStep === 0 ? 'none' : 'flex';
+    }
   }
 
   function showStep(i) {
     steps.forEach((step, index) => {
       step.classList.toggle('active', index === i);
     });
-
     progressLabels.forEach((label, index) => {
       label.classList.toggle('active', index === i);
       if (index < i) {
@@ -59,10 +59,8 @@ document.addEventListener('DOMContentLoaded', function () {
         label.classList.remove('completed');
       }
     });
-
     const progress = (i / (progressLabels.length - 1)) * 100;
     progressBar.style.width = `${progress}%`;
-
     updateMobileProgress();
     updateMobileTitle();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -99,7 +97,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (form) {
     form.addEventListener('submit', async function (e) {
       e.preventDefault();
-
       const data = {
         partnerId: 99,
         studioCode: 1,
@@ -113,7 +110,6 @@ document.addEventListener('DOMContentLoaded', function () {
         segment: 1,
         comment: `Dispozice: ${document.querySelector('input[name="dispozice"]:checked')?.value}, Trouba: ${document.querySelector('input[name="trouba"]:checked')?.value}, Digestoř: ${document.querySelector('input[name="digestor"]:checked')?.value}, Lednice: ${document.querySelector('input[name="lednice"]:checked')?.value}, Dekor: ${document.querySelector('input[name="dekor"]:checked')?.value}, Rozpočet: ${document.querySelector('input[name="cena"]:checked')?.value}`
       };
-
       try {
         const res = await fetch('proxy.php', {
           method: 'POST',
@@ -123,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function () {
           },
           body: JSON.stringify(data)
         });
-
         if (res.ok) {
           alert('Formulář byl úspěšně odeslán.');
           form.reset();
@@ -150,4 +145,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
   showStep(currentStep);
 });
+
 
