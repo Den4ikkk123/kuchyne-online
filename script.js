@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const stepCounters = document.querySelectorAll('.mobile-progress .step-counter');
   let currentStep = 0;
 
-  /** ✅ Мапа коротких заголовків для мобільного */
   const shortTitles = {
     1: 'Vyberte dispozici:',
     2: 'Vyberte umístění trouby:',
@@ -17,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
     8: 'Kontaktní údaje:'
   };
 
-  /** ✅ Оновлення підсумку */
   function updateSummary() {
     const fields = ['dispozice', 'trouba', 'digestor', 'lednice', 'dekor', 'cena'];
     fields.forEach(field => {
@@ -27,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /** ✅ Оновлення заголовка для мобільного (з жирним останнім словом) */
  function updateMobileTitle() {
   const activeStep = steps[currentStep];
   const h2 = activeStep.querySelector('h2');
@@ -35,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
   if (window.innerWidth <= 768 && h2) {
     const original = shortTitles[currentStep + 1] || h2.textContent;
 
-    // Розбиваємо на дві частини: "Vyberte" і ключове слово
     const parts = original.replace(':', '').split(' ');
     const firstWord = parts.shift(); // "Vyberte"
     const rest = parts.join(' '); // "dispozici"
@@ -44,14 +40,12 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 }
 
-  /** ✅ Оновлення прогресу мобільної версії */
   function updateMobileProgress() {
     stepCounters.forEach(counter => {
       counter.textContent = `KROK ${currentStep + 1}/7`;
     });
   }
 
-  /** ✅ Показати активний крок */
   function showStep(i) {
     steps.forEach((step, index) => {
       step.classList.toggle('active', index === i);
@@ -74,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  /** ✅ Кнопка "Далі" */
   document.querySelectorAll('.next').forEach(btn => {
     btn.addEventListener('click', () => {
       if (currentStep < steps.length - 1) {
@@ -85,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /** ✅ Кнопка "Назад" */
   document.querySelectorAll('.prev').forEach(btn => {
     btn.addEventListener('click', () => {
       if (currentStep > 0) {
@@ -95,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /** ✅ Активуємо кнопку після вибору */
   document.querySelectorAll('input[type="radio"]').forEach(input => {
     input.addEventListener('change', () => {
       const parentStep = input.closest('.step');
@@ -104,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /** ✅ Обробка форми */
   const form = document.getElementById('contact-form');
   if (form) {
     form.addEventListener('submit', async function (e) {
@@ -146,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /** ✅ Обробка стрілок у мобільному прогресі */
   document.addEventListener('click', (e) => {
     if (e.target.classList.contains('prev-step') && currentStep > 0) {
       currentStep--;
@@ -159,7 +148,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  /** Старт */
   showStep(currentStep);
 });
 
