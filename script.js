@@ -28,25 +28,21 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /** ✅ Оновлення заголовка для мобільного (з жирним останнім словом) */
-  function updateMobileTitle() {
-    const activeStep = steps[currentStep];
-    const h2 = activeStep.querySelector('h2');
-    if (window.innerWidth <= 768 && h2) {
-      const title = shortTitles[currentStep + 1] || h2.textContent;
+ function updateMobileTitle() {
+  const activeStep = steps[currentStep];
+  const h2 = activeStep.querySelector('h2');
 
-      // Розбиваємо на слова
-      const cleanTitle = title.replace(':', '').trim();
-      const words = cleanTitle.split(' ');
+  if (window.innerWidth <= 768 && h2) {
+    const original = shortTitles[currentStep + 1] || h2.textContent;
 
-      if (words.length > 1) {
-        const firstPart = words.slice(0, -1).join(' ');
-        const lastWord = words[words.length - 1];
-        h2.innerHTML = `${firstPart} <strong>${lastWord}</strong>:`;
-      } else {
-        h2.textContent = title;
-      }
-    }
+    // Розбиваємо на дві частини: "Vyberte" і ключове слово
+    const parts = original.replace(':', '').split(' ');
+    const firstWord = parts.shift(); // "Vyberte"
+    const rest = parts.join(' '); // "dispozici"
+
+    h2.innerHTML = `<span style="font-weight: 400;">${firstWord}</span> <strong style="text-transform: uppercase;">${rest}</strong>:`;
   }
+}
 
   /** ✅ Оновлення прогресу мобільної версії */
   function updateMobileProgress() {
