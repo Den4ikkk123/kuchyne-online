@@ -25,7 +25,7 @@
   .step[data-step="2"] .option-card .label-text::after {
     content: "";
     display: block;
-    width: 160px; /* довжина лінії */
+    width: 220px; /* довжина лінії */
     height: 2px;
     background-color: #ccc;
     margin: 8px auto 0 auto; /* вирівняти по центру під текстом */
