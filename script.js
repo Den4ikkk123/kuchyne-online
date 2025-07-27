@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
   /** ✅ Мапа коротких заголовків для мобільного */
   const shortTitles = {
     1: 'Vyberte dispozici:',
-    2: 'Vyberte troubu:',
+    2: 'Vyberte umístění trouby:',
     3: 'Vyberte digestoř:',
     4: 'Vyberte lednici:',
     5: 'Vyberte dekor:',
@@ -27,12 +27,24 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  /** ✅ Оновлення заголовка для мобільного */
+  /** ✅ Оновлення заголовка для мобільного (з жирним останнім словом) */
   function updateMobileTitle() {
     const activeStep = steps[currentStep];
     const h2 = activeStep.querySelector('h2');
     if (window.innerWidth <= 768 && h2) {
-      h2.textContent = shortTitles[currentStep + 1] || h2.textContent;
+      const title = shortTitles[currentStep + 1] || h2.textContent;
+
+      // Розбиваємо на слова
+      const cleanTitle = title.replace(':', '').trim();
+      const words = cleanTitle.split(' ');
+
+      if (words.length > 1) {
+        const firstPart = words.slice(0, -1).join(' ');
+        const lastWord = words[words.length - 1];
+        h2.innerHTML = `${firstPart} <strong>${lastWord}</strong>:`;
+      } else {
+        h2.textContent = title;
+      }
     }
   }
 
@@ -154,3 +166,4 @@ document.addEventListener('DOMContentLoaded', function () {
   /** Старт */
   showStep(currentStep);
 });
+
