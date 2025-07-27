@@ -6,6 +6,26 @@
   }
 }
 
+/* Стиль для лінії під заголовком у картці */
+.option-card .label-text {
+  font-weight: bold;
+  font-size: 18px;
+  display: inline-block;
+  position: relative;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+
+.option-card .label-text::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #ccc;
+  margin-top: 6px;
+}
+
+
 body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
