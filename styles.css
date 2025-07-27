@@ -212,37 +212,42 @@ button.prev:hover {
   gap: 20px;
 }
 
-/* === МОБІЛЬНА ВЕРСІЯ === */
+/* ===== Мобільна версія ===== */
 @media (max-width: 768px) {
 
-  /* Сховати десктопний прогрес */
+  /* Ховаємо прогрес і навігацію десктопу */
   .progress-container,
-  .progress-labels {
+  .progress-labels,
+  .step-buttons .prev {
     display: none !important;
   }
 
-  /* Основний заголовок */
-  .main-title {
+  /* Заголовки */
+  h1.main-title {
     font-size: 22px;
     text-align: center;
     margin-bottom: 10px;
   }
 
-  /* Заголовки кроків */
   .step h2 {
-    font-size: 18px;
     text-align: center;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-  }
-  .step h2 .thin {
+    font-size: 18px;
     font-weight: 300;
+    text-transform: uppercase;
+    margin-bottom: 20px;
   }
+
   .step h2 strong {
     font-weight: 700;
   }
 
-  /* Картки горизонтально */
+  /* Контейнер кроку */
+  .step.active {
+    display: block;
+    padding: 0 10px;
+  }
+
+  /* Картки */
   .options-grid {
     display: flex;
     flex-direction: column;
@@ -257,110 +262,90 @@ button.prev:hover {
     border-radius: 8px;
     padding: 10px;
     background: #fff;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
   }
 
   .option-card img {
-    width: 100px;
+    width: 80px;
     height: auto;
     border-radius: 4px;
     margin-right: 12px;
+    flex-shrink: 0;
   }
-  
-  /* Риска під заголовком на всю ширину картки */
-.option-card .text-block {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
 
-.option-card .text-block::after {
+  /* Текст усередині картки */
+  .option-card .label-text {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .option-card .description-text {
+    font-size: 13px;
+    color: #555;
+    margin-top: 5px;
+  }
+
+  /* Горизонтальна риска після заголовка */
+  .option-card .label-text::after {
     content: "";
     display: block;
     width: 100%;
     height: 1px;
     background: #ccc;
-    margin: 6px 0;
-}
-
-  .text-block {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .label-text {
-    font-weight: 700;
-    font-size: 14px;
-    margin-bottom: 5px;
-    position: relative;
-  }
-
-  /* Риска під заголовком */
-  .label-text::after {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 2px;
-    background: #ccc;
     margin-top: 4px;
+    margin-bottom: 4px;
   }
 
-  .description-text {
-    font-size: 13px;
-    color: #666;
-  }
-
-  /* Мобільний прогрес */
+  /* Прогрес (KROK X/X) */
   .mobile-progress {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px 0;
-    gap: 15px;
+    gap: 20px;
+    margin: 25px 0;
   }
 
   .mobile-progress .arrow {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    background: #f6f6f6;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 22px;
+    color: #000;
+    background: none;
+    border: none;
     cursor: pointer;
+    padding: 0;
   }
 
   .mobile-progress .step-counter {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 16px;
+  }
+
+  /* Кнопка "Pokračovat" */
+  .step-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+  }
+
+  .step-buttons .next {
+    border: 2px solid #e30613;
+    color: #e30613;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    background: none;
+    padding: 12px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+    width: auto;
   }
 
   /* Ховаємо кнопку Zpět */
   .step-buttons .prev {
     display: none !important;
   }
-
-  /* Кнопка Pokračovat */
-  .step-buttons {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-
-  .step-buttons .next,
-  .step-buttons button[type="submit"] {
-    background: #fff;
-    color: #d60000;
-    font-weight: bold;
-    border: 2px solid #d60000;
-    border-radius: 8px;
-    padding: 10px 30px;
-    font-size: 16px;
-    text-transform: uppercase;
-  }
-
 }
+
