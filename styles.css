@@ -238,14 +238,12 @@ button.prev:hover {
 }
 
 @media (max-width: 768px) {
-  /* Ховаємо десктопний прогрес */
   .progress-container,
   .progress-labels,
   .step-buttons .prev {
     display: none !important;
   }
 
-  /* Заголовки */
   h1.main-title {
     font-size: 22px;
     text-align: center;
@@ -264,13 +262,11 @@ button.prev:hover {
     font-weight: 700;
   }
 
-  /* Контейнер кроку */
   .step.active {
     display: block;
     padding: 0 10px;
   }
 
-  /* ✅ Картки для всіх кроків */
   .options-grid {
     display: flex;
     flex-direction: column;
@@ -279,7 +275,7 @@ button.prev:hover {
 
   .option-card {
     display: flex;
-    flex-direction: row; /* Завжди горизонтально */
+    flex-direction: row;
     align-items: flex-start;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -367,29 +363,42 @@ button.prev:hover {
     line-height: 1.4;
   }
 
-  /* Прогрес */
   .mobile-progress {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
     margin: 25px 0;
   }
 
   .mobile-progress .arrow {
-    font-size: 22px;
-    color: #000;
-    background: none;
-    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: #777;
     cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .mobile-progress .arrow:hover {
+    border-color: #aaa;
+    color: #555;
+    background: #f1f1f1;
   }
 
   .mobile-progress .step-counter {
     font-weight: 700;
-    font-size: 16px;
+    font-size: 18px;
+    color: #000;
+    letter-spacing: 0.5px;
   }
 
-  /* Кнопка "Pokračovat" */
   .step-buttons {
     display: flex;
     justify-content: center;
