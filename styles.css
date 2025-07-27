@@ -212,8 +212,37 @@ button.prev:hover {
   gap: 20px;
 }
 
+/* === МОБІЛЬНА ВЕРСІЯ === */
 @media (max-width: 768px) {
 
+  /* Сховати десктопний прогрес */
+  .progress-container,
+  .progress-labels {
+    display: none !important;
+  }
+
+  /* Основний заголовок */
+  .main-title {
+    font-size: 22px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  /* Заголовки кроків */
+  .step h2 {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+  .step h2 .thin {
+    font-weight: 300;
+  }
+  .step h2 strong {
+    font-weight: 700;
+  }
+
+  /* Картки горизонтально */
   .options-grid {
     display: flex;
     flex-direction: column;
@@ -223,46 +252,36 @@ button.prev:hover {
   .option-card {
     display: flex;
     flex-direction: row;
-    align-items: flex-start; /* текст починається зверху */
-    justify-content: flex-start;
-    padding: 12px;
+    align-items: center;
     border: 1px solid #ccc;
     border-radius: 8px;
+    padding: 10px;
     background: #fff;
-    width: 100%;
-    box-sizing: border-box;
   }
 
   .option-card img {
-    width: 90px;
+    width: 100px;
     height: auto;
     border-radius: 4px;
-    margin-right: 15px;
-    flex-shrink: 0;
+    margin-right: 12px;
   }
 
-  .option-card input {
-    display: none;
-  }
-
-  /* Контейнер тексту */
-  .option-card .text-block {
+  .text-block {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    max-width: calc(100% - 110px);
-    flex: 1;
+    justify-content: center;
   }
 
-  .option-card .label-text {
-    font-weight: bold;
-    font-size: 16px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-    display: block;
+  .label-text {
+    font-weight: 700;
+    font-size: 14px;
+    margin-bottom: 5px;
     position: relative;
   }
 
-  .option-card .label-text::after {
+  /* Риска під заголовком */
+  .label-text::after {
     content: "";
     display: block;
     width: 40px;
@@ -271,15 +290,61 @@ button.prev:hover {
     margin-top: 4px;
   }
 
-  .option-card .description-text {
-    font-size: 14px;
+  .description-text {
+    font-size: 13px;
     color: #666;
-    line-height: 1.4;
-    white-space: normal;
-    word-break: break-word;
   }
 
-  .option-card hr.option-separator {
-    display: none;
+  /* Мобільний прогрес */
+  .mobile-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+    gap: 15px;
   }
+
+  .mobile-progress .arrow {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    background: #f6f6f6;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .mobile-progress .step-counter {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  /* Ховаємо кнопку Zpět */
+  .step-buttons .prev {
+    display: none !important;
+  }
+
+  /* Кнопка Pokračovat */
+  .step-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .step-buttons .next,
+  .step-buttons button[type="submit"] {
+    background: #fff;
+    color: #d60000;
+    font-weight: bold;
+    border: 2px solid #d60000;
+    border-radius: 8px;
+    padding: 10px 30px;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+
 }
