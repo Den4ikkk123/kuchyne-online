@@ -168,10 +168,6 @@ body {
     background-color: #e6e6e6;
   }
 
-/* .option-card input[type="radio"]:checked ~ .label-text {
-  color: #000;
-} */
-
  .option-card:has(input[type="radio"]:checked) {
     background-color: #e6e6e6;
     border-color: #d4d4d4;
